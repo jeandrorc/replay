@@ -1,0 +1,6 @@
+{
+  "name": "@replay/ai",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Optional post-MVP AI provider adapters"
+}

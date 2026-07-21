@@ -1,0 +1,6 @@
+{
+  "name": "@replay/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Future Replay Tauri desktop composition root"
+}

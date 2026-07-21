@@ -1,0 +1,13 @@
+{
+  "requiredDocuments": [
+    "AGENTS.md",
+    "README.md",
+    "docs/README.md",
+    "docs/project-status.md",
+    "docs/development-loop.md",
+    "docs/architecture/architecture.md",
+    "docs/architecture/package-boundaries.md",
+    "docs/backlog/README.md"
+  ],
+  "requiredTurboTasks": []
+}

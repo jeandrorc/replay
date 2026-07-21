@@ -1,0 +1,34 @@
+{
+  "name": "replay",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local-first activity timeline for reconstructing developer worklogs.",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "check": "pnpm format:check && pnpm lint && pnpm lint:md && pnpm harness:check && pnpm typecheck && pnpm test",
+    "build": "node scripts/harness/run-turbo-task.mjs build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint '**/*.{ts,tsx}' --no-error-on-unmatched-pattern",
+    "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
+    "harness:check": "node scripts/harness/check.mjs",
+    "harness:test": "node --test scripts/harness/*.test.mjs",
+    "test": "pnpm harness:test && node scripts/harness/run-turbo-task.mjs test",
+    "typecheck": "node scripts/harness/run-turbo-task.mjs typecheck"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.31.0",
+    "eslint": "9.31.0",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "16.3.0",
+    "markdownlint-cli2": "0.18.1",
+    "prettier": "3.6.2",
+    "turbo": "2.5.5",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.38.0"
+  }
+}
