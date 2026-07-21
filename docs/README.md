@@ -14,6 +14,8 @@
   half-open ranges, identifiers, and validation semantics.
 - [Observed events](architecture/observed-events.md): immutable event envelope,
   initial kinds, privacy derivation, and unknown-event quarantine.
+- [Event ingestion](architecture/event-ingestion.md): application ports, atomic
+  idempotency, and redacted failure mapping.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
