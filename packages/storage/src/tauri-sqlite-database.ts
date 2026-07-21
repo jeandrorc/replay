@@ -1,6 +1,9 @@
 import Database from '@tauri-apps/plugin-sql';
 
-import type { SqliteDatabase } from './sqlite-foundation.js';
+import type {
+  SqliteDatabase,
+  SqliteExecutionResult,
+} from './sqlite-foundation.js';
 
 const DATABASE_NAME_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9._-]*$/;
 
@@ -27,8 +30,12 @@ export const createTauriSqliteDatabase = async (
 
   return {
     connectionUrl,
-    async execute(sql, bindValues): Promise<void> {
-      await database.execute(sql, bindValues ? [...bindValues] : undefined);
+    async execute(sql, bindValues): Promise<SqliteExecutionResult> {
+      const result = await database.execute(
+        sql,
+        bindValues ? [...bindValues] : undefined,
+      );
+      return { rowsAffected: result.rowsAffected };
     },
     select<Row>(sql: string, bindValues?: readonly unknown[]): Promise<Row[]> {
       return database.select<Row[]>(

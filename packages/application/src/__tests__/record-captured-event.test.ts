@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { Identifier, UtcInstant, type ObservedEventId } from '@replay/domain';
+import {
+  Identifier,
+  UtcInstant,
+  type ObservedEvent,
+  type ObservedEventId,
+} from '@replay/domain';
 
 import {
   ApplicationError,
@@ -29,6 +34,10 @@ class InMemoryRepository implements ObservedEventRepositoryPort {
     }
     this.observations.push(observation);
     return Promise.resolve({ status: 'saved' });
+  }
+
+  public findOccurredIn(): Promise<ObservedEvent[]> {
+    return Promise.resolve([]);
   }
 }
 
@@ -111,6 +120,7 @@ await test('redacts repository failures from the application error', async () =>
   const repository: ObservedEventRepositoryPort = {
     saveIfAbsent: (): Promise<SaveObservationResult> =>
       Promise.reject(new Error('sqlite failed for secret-window-title')),
+    findOccurredIn: (): Promise<ObservedEvent[]> => Promise.resolve([]),
   };
 
   await assert.rejects(

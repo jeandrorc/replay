@@ -24,7 +24,7 @@ Completion evidence:
 - Real temporary SQLite databases verify ordered/idempotent migrations, WAL,
   foreign keys, rollback, and recovery guidance.
 
-### [~] STO-002 — Implement the event repository
+### [x] STO-002 — Implement the event repository
 
 Acceptance criteria:
 
@@ -35,7 +35,14 @@ Acceptance criteria:
 - Queries are bounded and indexed for a daily timeline.
 - Database rows do not escape the adapter.
 
-### [ ] STO-003 — Persist review decisions and settings
+Completion evidence:
+
+- Shared repository contracts pass against memory and real SQLite adapters.
+- All known payloads and versions round-trip; unknown raw payload remains stored
+  while the domain receives only quarantine metadata.
+- Query-plan integration tests verify the bounded UTC query uses its index.
+
+### [~] STO-003 — Persist review decisions and settings
 
 Acceptance criteria:
 

@@ -20,6 +20,8 @@
   append-only decisions, concurrency, and overlap review.
 - [SQLite foundation](architecture/sqlite-foundation.md): Tauri connection,
   migration atomicity, pragmas, and recovery behavior.
+- [Event persistence](architecture/event-persistence.md): private schema,
+  idempotency, payload compatibility, quarantine, and bounded queries.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
