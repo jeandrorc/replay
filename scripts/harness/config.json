@@ -9,5 +9,5 @@
     "docs/architecture/package-boundaries.md",
     "docs/backlog/README.md"
   ],
-  "requiredTurboTasks": []
+  "requiredTurboTasks": ["build", "lint", "test", "typecheck"]
 }

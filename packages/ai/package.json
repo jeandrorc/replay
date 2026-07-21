@@ -2,5 +2,18 @@
   "name": "@replay/ai",
   "version": "0.0.0",
   "private": true,
-  "description": "Optional post-MVP AI provider adapters"
+  "description": "Optional post-MVP AI provider adapters",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint 'src/**/*.ts' --max-warnings 0",
+    "test": "node --test ../../scripts/harness/package-entry-check.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
 }
