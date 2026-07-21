@@ -24,13 +24,15 @@ Tests: validate a clean install and the CI workflow locally where practical.
 
 Progress evidence (2026-07-21):
 
-- `pnpm install --frozen-lockfile` succeeds in the current working tree.
-- `pnpm check` succeeds; typecheck and test currently execute zero package tasks
+- The initial repository commit is `7c1622d`; reproducibility correction
+  `c38b413` ensures nested commands use project pnpm 10.33.0 through Corepack.
+- Frozen installation, `pnpm check`, and `pnpm build` pass from a clean clone of
+  `c38b413`; typecheck, test, and build intentionally execute zero package tasks
   until FND-002 adds package scripts and entry points.
 - `.github/workflows/ci.yml` runs the frozen install and root check on macOS for
   pushes to `main`/`master` and pull requests.
-- Remaining before completion: commit the initial repository state, verify from
-  a clean checkout, and observe a successful remote CI run.
+- Remaining before completion: configure a remote/default branch and observe a
+  successful GitHub Actions run when publication is authorized.
 
 ### [ ] FND-002 — Scaffold typed package entry points
 

@@ -40,22 +40,22 @@ test                            PASS (0 package tasks)
 The zero-task result is expected before FND-002, but it means the current green
 typecheck and test results validate configuration only, not application code.
 The GitHub Actions workflow has been inspected but has not run remotely because
-the repository has no commits yet.
+no remote is configured yet. Frozen installation, the root check, and build pass
+from a clean clone of commit `c38b413` using project pnpm 10.33.0.
 
 ## Current step
 
 FND-004 is complete. FND-001 is active again and retains its partial evidence;
-it should be marked done only after the initial repository commit allows
-verification from a clean checkout and the CI job succeeds on the remote
-repository.
+the initial commits and clean-checkout verification are complete. It should be
+marked done only after the CI job succeeds on a configured remote repository.
 
 This work changes only repository tooling and documentation. It involves no
 application port, external-I/O adapter, or product invariant.
 
 ## Next steps
 
-1. Create the initial commit and run CI from the resulting clean repository.
-2. Record that evidence and complete FND-001 if both checks pass.
+1. Configure a Git remote when publication is authorized and run CI.
+2. Record that evidence and complete FND-001 if the workflow passes.
 3. Start FND-002 by adding only typed public entry points, per-package
    TypeScript configuration, exports, and executable build/check scripts.
 4. Enable required Turbo task enforcement for build, typecheck, and test.
