@@ -7,7 +7,7 @@ queries.
 
 ## Stories
 
-### [ ] STO-001 — Initialize SQLite and migrations
+### [~] STO-001 — Initialize SQLite and migrations
 
 Acceptance criteria:
 

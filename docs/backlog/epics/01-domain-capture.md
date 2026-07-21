@@ -68,7 +68,7 @@ Completion evidence (2026-07-21):
 - Stable application errors redact invalid payload and repository details.
 - Five application and public-entry tests use controllable in-memory fakes.
 
-### [~] APP-002 — Add and edit manual activity
+### [x] APP-002 — Add and edit manual activity
 
 Acceptance criteria:
 
@@ -77,3 +77,12 @@ Acceptance criteria:
 - Title is required; category and ticket reference are optional.
 - Overlap is allowed but surfaced to review rather than silently merged.
 - Editing creates a traceable user decision and preserves original evidence.
+
+Completion evidence (2026-07-21):
+
+- Immutable manual activities support completed and ongoing timing.
+- Start/stop and edit operations append traceable revisions with decision IDs.
+- Atomic repository contracts prevent a second ongoing activity and stale edits.
+- Overlap IDs are returned for review without blocking or merging activity.
+- Tests cover validation, revision preservation, overlap, ongoing exclusivity,
+  stop, edit, and invalid ranges.

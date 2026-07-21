@@ -33,8 +33,8 @@ backlog.
 
 ## Current position
 
-- Epic 00 through APP-001 are complete. APP-002 is the only active story and
-  introduces create, start/stop, and correction flows for manual activity.
+- Epic 00 and Epic 01 are complete. STO-001 is the only active story and begins
+  the SQLite adapter with transactional migrations and explicit configuration.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

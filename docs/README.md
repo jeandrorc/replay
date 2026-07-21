@@ -16,6 +16,8 @@
   initial kinds, privacy derivation, and unknown-event quarantine.
 - [Event ingestion](architecture/event-ingestion.md): application ports, atomic
   idempotency, and redacted failure mapping.
+- [Manual activity](architecture/manual-activity.md): ongoing/completed states,
+  append-only decisions, concurrency, and overlap review.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
