@@ -36,7 +36,8 @@ backlog.
 - Epic 00 is in progress.
 - FND-001 and FND-004 are complete and the repository-native development harness
   is active.
-- FND-002 is the only active story; FND-003 remains not started.
+- FND-005 is the only active story to remediate and automate dependency
+  security. FND-002 is paused, not completed; FND-003 remains not started.
 - Product implementation must not begin before Epic 00 is complete.
 
 ## Backlog rules

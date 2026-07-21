@@ -47,7 +47,7 @@ Completion evidence (2026-07-21):
 - CI feedback identified deprecated action runtimes; checkout and Node setup
   were upgraded to their current v7 major before handoff.
 
-### [~] FND-002 — Scaffold typed package entry points
+### [ ] FND-002 — Scaffold typed package entry points
 
 As a contributor, I want every planned package to compile independently with a
 public entry point.
@@ -123,3 +123,40 @@ Completion evidence (2026-07-21):
   story/execution plan.
 - Turbo zero-task enforcement is installed but intentionally disabled in
   `scripts/harness/config.json` until FND-002 creates executable package tasks.
+
+### [~] FND-005 — Automate dependency vulnerability mitigation
+
+As a maintainer, I want vulnerable dependencies detected and updated
+continuously so known security defects do not accumulate unnoticed.
+
+Acceptance criteria:
+
+- All Dependabot alerts open on 2026-07-21 are resolved through patched direct
+  or transitive dependency versions without weakening checks.
+- A root security audit command fails on moderate-or-higher known
+  vulnerabilities and runs in a dedicated GitHub Actions workflow.
+- Dependabot checks the pnpm workspace and GitHub Actions weekly, groups related
+  development-tool updates, and limits update noise.
+- The security workflow runs on relevant dependency changes, weekly schedule,
+  and manual dispatch using frozen installation and the project package manager.
+- Documentation records alert scope, policy, automated response, and remaining
+  limitations.
+
+Architectural constraints:
+
+- Owning layer/package: repository dependency tooling and GitHub automation.
+- Ports/adapters: none; no product runtime behavior or user activity data.
+- Dependency updates remain exact and lockfile-backed.
+- ADR required: no; this adds an operational guardrail without changing product
+  architecture.
+
+Test obligations:
+
+- `pnpm audit --audit-level moderate` reports no known vulnerabilities.
+- Frozen installation, `pnpm check`, and `pnpm build` pass.
+- GitHub Actions validates the security workflow after publication.
+
+Out of scope:
+
+- Automatic merging, major-version migration without review, runtime telemetry,
+  and package scaffolding assigned to FND-002.

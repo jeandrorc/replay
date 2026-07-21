@@ -14,6 +14,8 @@
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
   work records.
+- [Dependency security](security/dependency-management.md): audit policy,
+  Dependabot cadence, remediation, and limitations.
 - [Templates](templates): strict story, epic, and ADR formats.
 
 When documents conflict, accepted ADRs and the architecture contract outrank

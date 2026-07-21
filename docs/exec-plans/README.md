@@ -6,6 +6,7 @@ uses a versioned plan here.
 
 - `active/` contains exactly one plan whose story is marked `[~]` in the
   backlog.
+- `pending/` contains plans intentionally paused for a newly prioritized story.
 - `completed/` contains immutable handoff records for completed plans.
 - A plan moves to `completed/` only after its story criteria are verified.
 

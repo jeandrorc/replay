@@ -17,6 +17,7 @@
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "harness:check": "node scripts/harness/check.mjs",
     "harness:test": "node --test scripts/harness/*.test.mjs",
+    "security:audit": "corepack pnpm audit --audit-level moderate",
     "test": "corepack pnpm harness:test && node scripts/harness/run-turbo-task.mjs test",
     "typecheck": "node scripts/harness/run-turbo-task.mjs typecheck"
   },
@@ -25,9 +26,9 @@
     "eslint": "9.31.0",
     "eslint-config-prettier": "10.1.8",
     "globals": "16.3.0",
-    "markdownlint-cli2": "0.18.1",
+    "markdownlint-cli2": "0.23.1",
     "prettier": "3.6.2",
-    "turbo": "2.5.5",
+    "turbo": "2.10.5",
     "typescript": "5.8.3",
     "typescript-eslint": "8.38.0"
   }
