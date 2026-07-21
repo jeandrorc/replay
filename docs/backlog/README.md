@@ -33,8 +33,8 @@ backlog.
 
 ## Current position
 
-- Epic 00 Foundation is complete. DOM-001 is the only active story and begins
-  the pure domain model with UTC instants, half-open ranges, and identifiers.
+- Epic 00 Foundation and DOM-001 are complete. DOM-002 is the only active story
+  and adds immutable, versioned observed-event facts to the pure domain.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

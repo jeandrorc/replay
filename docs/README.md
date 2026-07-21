@@ -10,6 +10,8 @@
   privacy, and testing.
 - [Package boundaries](architecture/package-boundaries.md): allowed workspace
   dependencies.
+- [Domain primitives](architecture/domain-primitives.md): UTC instants,
+  half-open ranges, identifiers, and validation semantics.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
