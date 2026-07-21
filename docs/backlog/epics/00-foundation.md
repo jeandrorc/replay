@@ -71,7 +71,7 @@ Completion evidence (2026-07-21):
 - No workspace dependency or business type was introduced; frozen installation,
   root check, build, and security audit pass.
 
-### [~] FND-003 — Enforce architecture boundaries
+### [x] FND-003 — Enforce architecture boundaries
 
 As a maintainer, I want automated dependency rules so forbidden imports fail CI.
 
@@ -81,6 +81,18 @@ Acceptance criteria:
 - A fixture or test proves that a forbidden adapter-to-adapter dependency fails.
 - The rule permits the desktop composition root to wire all adapters.
 - The check is part of `pnpm check`.
+
+Completion evidence (2026-07-21):
+
+- `pnpm architecture:check` parses TypeScript imports and validates manifest
+  dependencies for every discovered workspace project.
+- Six tests reject adapter-to-adapter dependencies, package deep imports, and
+  unregistered workspace projects while permitting inward dependencies and the
+  desktop composition root.
+- The executable policy mirrors the documented matrix and checks all eight
+  current projects without adding a dependency.
+- Architecture validation is part of `pnpm check`; full checks, build, and
+  security audit pass.
 
 ### [x] FND-004 — Operationalize the agent development loop
 

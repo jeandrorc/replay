@@ -33,12 +33,10 @@ backlog.
 
 ## Current position
 
-- Epic 00 is in progress.
-- FND-001 and FND-004 are complete and the repository-native development harness
-  is active.
-- FND-002 and FND-005 are complete. FND-003 is the only active story and will
-  convert the documented package-boundary matrix into an executable CI rule.
-- Product implementation must not begin before Epic 00 is complete.
+- Epic 00 Foundation is complete. DOM-001 is the only active story and begins
+  the pure domain model with UTC instants, half-open ranges, and identifiers.
+- The repository-native development harness, CI, dependency security, package
+  entry points, and architecture-boundary checks are active.
 
 ## Backlog rules
 
