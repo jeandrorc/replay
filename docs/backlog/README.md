@@ -33,8 +33,8 @@ backlog.
 
 ## Current position
 
-- Epic 00, DOM-001, and DOM-002 are complete. APP-001 is the only active story
-  and introduces the first application use case and required ports.
+- Epic 00 through APP-001 are complete. APP-002 is the only active story and
+  introduces create, start/stop, and correction flows for manual activity.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

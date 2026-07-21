@@ -4,8 +4,8 @@
 - Current release: Release 0 — executable foundation
 - Current epic:
   [Epic 01 — Domain and capture](backlog/epics/01-domain-capture.md)
-- Current story: APP-001 — Record a captured event
-- Overall state: domain event model complete; first use case ready
+- Current story: APP-002 — Add and edit manual activity
+- Overall state: event ingestion complete; manual activity ready
 
 ## What exists
 
@@ -42,19 +42,19 @@ package's importable public entry point, and ten DOM-001 domain behaviors.
 
 ## Current step
 
-Epic 00, DOM-001, and DOM-002 are complete. Package boundaries remain enforced
-against manifests and parsed TypeScript imports, and pnpm reports zero known
-dependency vulnerabilities. APP-001 is active.
+Epic 00 through APP-001 are complete. Package boundaries remain enforced against
+manifests and parsed TypeScript imports, and pnpm reports zero known dependency
+vulnerabilities. APP-002 is active.
 
-The active story changes the application layer and defines clock, identifier,
-and repository ports. Only controllable test fakes act as adapters.
+The active story changes domain and application concepts for manual activity.
+Only controllable test fakes act as adapters.
 
 ## Next steps
 
-1. Define the required application ports and collector input boundary.
-2. Record accepted events with application-supplied identity and time.
-3. Prove duplicate observations are idempotent.
-4. Map repository failures without leaking payload data.
+1. Refine completed, ongoing, and corrected manual-activity semantics.
+2. Implement create and start/stop flows through inward-facing ports.
+3. Preserve overlaps and surface them for review.
+4. Keep edits traceable without mutating original evidence.
 
 ## Risks and open decisions
 

@@ -49,7 +49,7 @@ Completion evidence (2026-07-21):
 - Events and payloads are frozen at runtime; focused tests cover construction,
   ordering, validation, privacy, compatibility, and immutability.
 
-### [~] APP-001 — Record a captured event
+### [x] APP-001 — Record a captured event
 
 Acceptance criteria:
 
@@ -59,7 +59,16 @@ Acceptance criteria:
 - Repository errors become actionable application errors without leaking
   sensitive payloads.
 
-### [ ] APP-002 — Add and edit manual activity
+Completion evidence (2026-07-21):
+
+- Application ports provide event IDs, observation time, and atomic persistence.
+- `RecordCapturedEvent` converts allowlisted collector input into accepted
+  facts.
+- `saveIfAbsent` deduplicates by observation ID and returns the original fact.
+- Stable application errors redact invalid payload and repository details.
+- Five application and public-entry tests use controllable in-memory fakes.
+
+### [~] APP-002 — Add and edit manual activity
 
 Acceptance criteria:
 

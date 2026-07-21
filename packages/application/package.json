@@ -4,6 +4,9 @@
   "private": true,
   "description": "Replay use cases and ports",
   "type": "module",
+  "dependencies": {
+    "@replay/domain": "workspace:*"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -13,7 +16,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "eslint 'src/**/*.ts' --max-warnings 0",
-    "test": "node --test ../../scripts/harness/package-entry-check.mjs",
+    "test": "node --test dist/__tests__/*.test.js ../../scripts/harness/package-entry-check.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   }
 }
