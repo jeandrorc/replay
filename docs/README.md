@@ -12,6 +12,8 @@
   dependencies.
 - [Domain primitives](architecture/domain-primitives.md): UTC instants,
   half-open ranges, identifiers, and validation semantics.
+- [Observed events](architecture/observed-events.md): immutable event envelope,
+  initial kinds, privacy derivation, and unknown-event quarantine.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session

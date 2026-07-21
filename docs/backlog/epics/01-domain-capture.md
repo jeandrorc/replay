@@ -28,7 +28,7 @@ Completion evidence (2026-07-21):
 - Ten domain and entry-point tests cover invalid values, equality, adjacency,
   UTC midnight, and DST presentation boundaries.
 
-### [~] DOM-002 — Model versioned activity events
+### [x] DOM-002 — Model versioned activity events
 
 Acceptance criteria:
 
@@ -39,7 +39,17 @@ Acceptance criteria:
 - Unknown persisted event kinds can be retained as opaque evidence.
 - Events are immutable after construction.
 
-### [ ] APP-001 — Record a captured event
+Completion evidence (2026-07-21):
+
+- `ObservedEvent` represents the complete envelope with typed, discriminated
+  payloads and positive payload versions.
+- Restricted factories cover every initial kind and derive source/privacy.
+- Unknown evidence is quarantined by kind and SHA-256 digest without loading an
+  arbitrary payload into the domain.
+- Events and payloads are frozen at runtime; focused tests cover construction,
+  ordering, validation, privacy, compatibility, and immutability.
+
+### [~] APP-001 — Record a captured event
 
 Acceptance criteria:
 
