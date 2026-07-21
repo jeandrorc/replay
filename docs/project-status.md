@@ -3,7 +3,7 @@
 - Last reviewed: 2026-07-21
 - Current release: Release 0 — executable foundation
 - Current epic: [Epic 00 — Foundation](backlog/epics/00-foundation.md)
-- Current story: FND-001 — Lock and validate the workspace
+- Current story: FND-002 — Scaffold typed package entry points
 - Overall state: foundation in progress; no product implementation exists
 
 ## What exists
@@ -39,28 +39,26 @@ test                            PASS (0 package tasks)
 
 The zero-task result is expected before FND-002, but it means the current green
 typecheck and test results validate configuration only, not application code.
-The GitHub Actions workflow has been inspected but has not run remotely because
-no remote is configured yet. Frozen installation, the root check, and build pass
-from a clean clone of commit `c38b413` using project pnpm 10.33.0.
+Frozen installation, the root check, and build pass from a clean clone using
+project pnpm 10.33.0. GitHub Actions run `29837154774` also passed on macOS
+after the initial publication to `jeandrorc/replay`.
 
 ## Current step
 
-FND-004 is complete. FND-001 is active again and retains its partial evidence;
-the initial commits and clean-checkout verification are complete. It should be
-marked done only after the CI job succeeds on a configured remote repository.
+FND-001 and FND-004 are complete. FND-002 is active to make every planned
+package compile independently through a public entry point without introducing
+business concepts or speculative interfaces.
 
 This work changes only repository tooling and documentation. It involves no
 application port, external-I/O adapter, or product invariant.
 
 ## Next steps
 
-1. Configure a Git remote when publication is authorized and run CI.
-2. Record that evidence and complete FND-001 if the workflow passes.
-3. Start FND-002 by adding only typed public entry points, per-package
-   TypeScript configuration, exports, and executable build/check scripts.
-4. Enable required Turbo task enforcement for build, typecheck, and test.
-5. Complete FND-003 before introducing domain behavior.
-6. Begin DOM-001 only after all Foundation exit conditions are verified.
+1. Add typed public entry points, per-package TypeScript configuration, exports,
+   and executable build/check scripts for FND-002.
+2. Enable required Turbo task enforcement for build, typecheck, and test.
+3. Complete FND-003 before introducing domain behavior.
+4. Begin DOM-001 only after all Foundation exit conditions are verified.
 
 ## Risks and open decisions
 

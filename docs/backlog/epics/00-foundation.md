@@ -7,7 +7,7 @@ added.
 
 ## Stories
 
-### [~] FND-001 — Lock and validate the workspace
+### [x] FND-001 — Lock and validate the workspace
 
 As a contributor, I want reproducible dependency installation and root
 validation so every change is checked consistently.
@@ -34,7 +34,20 @@ Progress evidence (2026-07-21):
 - Remaining before completion: configure a remote/default branch and observe a
   successful GitHub Actions run when publication is authorized.
 
-### [ ] FND-002 — Scaffold typed package entry points
+Completion evidence (2026-07-21):
+
+- `master` was published to `git@github.com:jeandrorc/replay.git` and became the
+  default branch.
+- GitHub Actions run
+  [29837154774](https://github.com/jeandrorc/replay/actions/runs/29837154774)
+  completed successfully on macOS in 24 seconds, including frozen installation
+  and `pnpm check`.
+- Dependency caching is performance-only: correctness remains guarded by the
+  committed lockfile and `--frozen-lockfile`.
+- CI feedback identified deprecated action runtimes; checkout and Node setup
+  were upgraded to their current v7 major before handoff.
+
+### [~] FND-002 — Scaffold typed package entry points
 
 As a contributor, I want every planned package to compile independently with a
 public entry point.
