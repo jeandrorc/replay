@@ -9,7 +9,7 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "check": "pnpm format:check && pnpm lint && pnpm lint:md && pnpm harness:check && pnpm typecheck && pnpm test",
+    "check": "corepack pnpm format:check && corepack pnpm lint && corepack pnpm lint:md && corepack pnpm harness:check && corepack pnpm typecheck && corepack pnpm test",
     "build": "node scripts/harness/run-turbo-task.mjs build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -17,7 +17,7 @@
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
     "harness:check": "node scripts/harness/check.mjs",
     "harness:test": "node --test scripts/harness/*.test.mjs",
-    "test": "pnpm harness:test && node scripts/harness/run-turbo-task.mjs test",
+    "test": "corepack pnpm harness:test && node scripts/harness/run-turbo-task.mjs test",
     "typecheck": "node scripts/harness/run-turbo-task.mjs typecheck"
   },
   "devDependencies": {

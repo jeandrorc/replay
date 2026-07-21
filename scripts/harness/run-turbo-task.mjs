@@ -15,7 +15,7 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const config = JSON.parse(
   await readFile(path.join(scriptDirectory, 'config.json'), 'utf8'),
 );
-const child = spawn('pnpm', ['exec', 'turbo', 'run', task], {
+const child = spawn('corepack', ['pnpm', 'exec', 'turbo', 'run', task], {
   cwd: path.resolve(scriptDirectory, '../..'),
   env: { ...process.env, FORCE_COLOR: '0' },
   stdio: ['inherit', 'pipe', 'pipe'],
