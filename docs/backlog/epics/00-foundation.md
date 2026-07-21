@@ -47,7 +47,7 @@ Completion evidence (2026-07-21):
 - CI feedback identified deprecated action runtimes; checkout and Node setup
   were upgraded to their current v7 major before handoff.
 
-### [ ] FND-002 — Scaffold typed package entry points
+### [x] FND-002 — Scaffold typed package entry points
 
 As a contributor, I want every planned package to compile independently with a
 public entry point.
@@ -60,7 +60,18 @@ Acceptance criteria:
 - No placeholder business interfaces or speculative domain types are introduced.
 - Root `pnpm check` and `pnpm build` pass.
 
-### [ ] FND-003 — Enforce architecture boundaries
+Completion evidence (2026-07-21):
+
+- All eight workspace projects expose empty, non-speculative TypeScript entry
+  points plus declaration-aware `exports` maps.
+- Turbo executes 8/8 build, lint, typecheck, and package-entry tests; zero-task
+  enforcement is enabled for every required task.
+- Each package test verifies that its declared JavaScript and TypeScript entry
+  files exist and that the public JavaScript entry imports successfully.
+- No workspace dependency or business type was introduced; frozen installation,
+  root check, build, and security audit pass.
+
+### [~] FND-003 — Enforce architecture boundaries
 
 As a maintainer, I want automated dependency rules so forbidden imports fail CI.
 
@@ -124,7 +135,7 @@ Completion evidence (2026-07-21):
 - Turbo zero-task enforcement is installed but intentionally disabled in
   `scripts/harness/config.json` until FND-002 creates executable package tasks.
 
-### [~] FND-005 — Automate dependency vulnerability mitigation
+### [x] FND-005 — Automate dependency vulnerability mitigation
 
 As a maintainer, I want vulnerable dependencies detected and updated
 continuously so known security defects do not accumulate unnoticed.
@@ -160,3 +171,14 @@ Out of scope:
 
 - Automatic merging, major-version migration without review, runtime telemetry,
   and package scaffolding assigned to FND-002.
+
+Completion evidence (2026-07-21):
+
+- `turbo@2.10.5` and `markdownlint-cli2@0.23.1` resolve every alert to patched
+  direct and transitive versions; GitHub reports zero open Dependabot alerts.
+- Local audit, frozen installation, repository checks, and build pass.
+- PR [#2](https://github.com/jeandrorc/replay/pull/2) passed CI and Security
+  before merge.
+- Post-merge CI run `29837986664`, Security run `29837986827`, npm Dependabot
+  update `29837989032`, and Actions Dependabot update `29837989895` succeeded.
+- Weekly grouped updates propose reviewed PRs; automatic merge remains disabled.

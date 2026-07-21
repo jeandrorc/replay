@@ -3,7 +3,7 @@
 - Last reviewed: 2026-07-21
 - Current release: Release 0 — executable foundation
 - Current epic: [Epic 00 — Foundation](backlog/epics/00-foundation.md)
-- Current story: FND-005 — Automate dependency vulnerability mitigation
+- Current story: FND-003 — Enforce architecture boundaries
 - Overall state: foundation in progress; no product implementation exists
 
 ## What exists
@@ -45,19 +45,18 @@ after the initial publication to `jeandrorc/replay`.
 
 ## Current step
 
-FND-001 and FND-004 are complete. FND-002 is paused while FND-005 removes eight
-known Dependabot alerts and adds continuous dependency-security automation.
+FND-001, FND-002, FND-004, and FND-005 are complete. All eight workspace
+projects now execute build, lint, typecheck, and public-entry tests. GitHub and
+pnpm report zero known dependency alerts. FND-003 is active.
 
 This work changes only repository tooling and documentation. It involves no
 application port, external-I/O adapter, or product invariant.
 
 ## Next steps
 
-1. Complete FND-005 dependency remediation and verify GitHub automation.
-2. Resume FND-002 with typed public entry points and executable package tasks.
-3. Enable required Turbo task enforcement for build, typecheck, and test.
-4. Complete FND-003 before introducing domain behavior.
-5. Begin DOM-001 only after all Foundation exit conditions are verified.
+1. Enforce package dependency direction and public-only imports in FND-003.
+2. Prove forbidden dependencies fail while desktop composition remains allowed.
+3. Begin DOM-001 only after all Foundation exit conditions are verified.
 
 ## Risks and open decisions
 
