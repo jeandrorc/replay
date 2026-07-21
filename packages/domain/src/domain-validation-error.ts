@@ -3,6 +3,11 @@ export type DomainValidationErrorCode =
   | 'identifier.too_long'
   | 'identifier.whitespace'
   | 'identifier.control_character'
+  | 'event.digest.invalid'
+  | 'event.kind.invalid'
+  | 'event.observed_before_occurrence'
+  | 'event.text.invalid'
+  | 'event.version.invalid'
   | 'time.instant.invalid'
   | 'time.range.empty'
   | 'time.range.negative';

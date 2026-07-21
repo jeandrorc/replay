@@ -4,8 +4,8 @@
 - Current release: Release 0 — executable foundation
 - Current epic:
   [Epic 01 — Domain and capture](backlog/epics/01-domain-capture.md)
-- Current story: DOM-002 — Model versioned activity events
-- Overall state: domain primitives complete; event modeling ready
+- Current story: APP-001 — Record a captured event
+- Overall state: domain event model complete; first use case ready
 
 ## What exists
 
@@ -42,20 +42,19 @@ package's importable public entry point, and ten DOM-001 domain behaviors.
 
 ## Current step
 
-Epic 00 and DOM-001 are complete. Package boundaries remain enforced against
-manifests and parsed TypeScript imports, and pnpm reports zero known dependency
-vulnerabilities. DOM-002 is active.
+Epic 00, DOM-001, and DOM-002 are complete. Package boundaries remain enforced
+against manifests and parsed TypeScript imports, and pnpm reports zero known
+dependency vulnerabilities. APP-001 is active.
 
-The active story changes only the pure domain layer. It has no application port
-or external-I/O adapter and must preserve unsupported event kinds as opaque
-evidence.
+The active story changes the application layer and defines clock, identifier,
+and repository ports. Only controllable test fakes act as adapters.
 
 ## Next steps
 
-1. Define the event envelope, privacy classes, sources, and version rules.
-2. Model the initial event kinds without prohibited capture fields.
-3. Preserve unsupported kinds and versions as opaque evidence.
-4. Prove event immutability and JSON-safe payload boundaries.
+1. Define the required application ports and collector input boundary.
+2. Record accepted events with application-supplied identity and time.
+3. Prove duplicate observations are idempotent.
+4. Map repository failures without leaking payload data.
 
 ## Risks and open decisions
 
