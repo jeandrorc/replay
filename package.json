@@ -15,7 +15,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "node scripts/harness/run-turbo-task.mjs lint",
-    "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules'",
+    "lint:md": "markdownlint-cli2 '**/*.md' '#**/node_modules/**'",
     "harness:check": "node scripts/harness/check.mjs",
     "harness:test": "node --test scripts/harness/*.test.mjs",
     "security:audit": "corepack pnpm audit --audit-level moderate",

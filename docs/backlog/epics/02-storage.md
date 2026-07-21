@@ -7,7 +7,7 @@ queries.
 
 ## Stories
 
-### [~] STO-001 — Initialize SQLite and migrations
+### [x] STO-001 — Initialize SQLite and migrations
 
 Acceptance criteria:
 
@@ -18,7 +18,13 @@ Acceptance criteria:
   guidance.
 - WAL and foreign-key behavior are explicitly configured and tested.
 
-### [ ] STO-002 — Implement the event repository
+Completion evidence:
+
+- The official Tauri SQL plugin owns the production SQLite connection.
+- Real temporary SQLite databases verify ordered/idempotent migrations, WAL,
+  foreign keys, rollback, and recovery guidance.
+
+### [~] STO-002 — Implement the event repository
 
 Acceptance criteria:
 

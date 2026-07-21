@@ -18,6 +18,8 @@
   idempotency, and redacted failure mapping.
 - [Manual activity](architecture/manual-activity.md): ongoing/completed states,
   append-only decisions, concurrency, and overlap review.
+- [SQLite foundation](architecture/sqlite-foundation.md): Tauri connection,
+  migration atomicity, pragmas, and recovery behavior.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session
