@@ -4,8 +4,8 @@
 - Current release: Release 0 — executable foundation
 - Current epic:
   [Epic 01 — Domain and capture](backlog/epics/01-domain-capture.md)
-- Current story: DOM-001 — Model time ranges and identifiers
-- Overall state: foundation complete; first pure-domain story ready
+- Current story: DOM-002 — Model versioned activity events
+- Overall state: domain primitives complete; event modeling ready
 
 ## What exists
 
@@ -21,8 +21,10 @@
   enforcement.
 
 All eight workspace projects have typed public entry points and executable
-build, lint, typecheck, and entry-point tests. There are no domain models, use
-cases, adapters, Tauri application code, migrations, or product tests yet.
+build, lint, typecheck, and tests. The domain now provides validated UTC
+instants, half-open time ranges, typed identifiers, and stable validation
+errors. There are no use cases, adapters, Tauri application code, migrations, or
+persisted event models yet.
 
 ## Verified on 2026-07-21
 
@@ -35,26 +37,25 @@ pnpm build               PASS (8 package tasks)
 pnpm security:audit      PASS (no known vulnerabilities)
 ```
 
-The current tests cover the development harness, architecture policy, and each
-package's importable public entry point. Product behavior coverage begins with
-DOM-001.
+The current tests cover the development harness, architecture policy, each
+package's importable public entry point, and ten DOM-001 domain behaviors.
 
 ## Current step
 
-Epic 00 is complete. All eight workspace projects execute build, lint,
-typecheck, and public-entry tests; package boundaries are enforced against
-manifests and parsed TypeScript imports. GitHub and pnpm report zero known
-dependency alerts. DOM-001 is active.
+Epic 00 and DOM-001 are complete. Package boundaries remain enforced against
+manifests and parsed TypeScript imports, and pnpm reports zero known dependency
+vulnerabilities. DOM-002 is active.
 
 The active story changes only the pure domain layer. It has no application port
-or external-I/O adapter; identifier generation remains outside the domain.
+or external-I/O adapter and must preserve unsupported event kinds as opaque
+evidence.
 
 ## Next steps
 
-1. Define the DOM-001 glossary and exact UTC/range invariants.
-2. Implement pure value objects and identifier types without I/O.
-3. Add boundary, equality, midnight, and DST presentation tests.
-4. Continue to DOM-002 only after DOM-001 evidence is complete.
+1. Define the event envelope, privacy classes, sources, and version rules.
+2. Model the initial event kinds without prohibited capture fields.
+3. Preserve unsupported kinds and versions as opaque evidence.
+4. Prove event immutability and JSON-safe payload boundaries.
 
 ## Risks and open decisions
 

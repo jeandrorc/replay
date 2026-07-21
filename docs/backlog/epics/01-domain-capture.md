@@ -7,7 +7,7 @@ capture.
 
 ## Stories
 
-### [~] DOM-001 — Model time ranges and identifiers
+### [x] DOM-001 — Model time ranges and identifiers
 
 Acceptance criteria:
 
@@ -16,7 +16,19 @@ Acceptance criteria:
 - Tests cover zero/negative ranges, midnight, DST display boundaries, and
   equality.
 
-### [ ] DOM-002 — Model versioned activity events
+Completion evidence (2026-07-21):
+
+- `UtcInstant` validates and canonically serializes millisecond UTC instants.
+- `TimeRange` enforces non-empty half-open ranges with deterministic
+  containment, overlap, duration, and equality behavior.
+- `Identifier<Kind>` validates supplied opaque values and contains no generation
+  capability.
+- Runtime-frozen value objects and typed validation errors are exported only
+  through the `@replay/domain` public entry point.
+- Ten domain and entry-point tests cover invalid values, equality, adjacency,
+  UTC midnight, and DST presentation boundaries.
+
+### [~] DOM-002 — Model versioned activity events
 
 Acceptance criteria:
 
