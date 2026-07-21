@@ -23,3 +23,14 @@ Additional constraints:
 - A type is owned by the layer that defines its meaning. Do not duplicate
   equivalent DTOs merely to satisfy a directory convention; map only at a real
   boundary.
+
+## Automated enforcement
+
+Run `pnpm architecture:check` to validate workspace dependency fields and
+TypeScript module specifiers against this matrix. The executable policy is in
+`scripts/architecture/policy.mjs`; changes to it must update this table and its
+positive and negative tests in the same change.
+
+The checker parses TypeScript syntax, rejects unknown `@replay/*` packages,
+forbidden dependency direction, and package subpath imports. It reads only
+repository manifests and `src` files and introduces no product dependency.

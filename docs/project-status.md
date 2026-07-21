@@ -2,9 +2,10 @@
 
 - Last reviewed: 2026-07-21
 - Current release: Release 0 — executable foundation
-- Current epic: [Epic 00 — Foundation](backlog/epics/00-foundation.md)
-- Current story: FND-003 — Enforce architecture boundaries
-- Overall state: foundation in progress; no product implementation exists
+- Current epic:
+  [Epic 01 — Domain and capture](backlog/epics/01-domain-capture.md)
+- Current story: DOM-001 — Model time ranges and identifiers
+- Overall state: foundation complete; first pure-domain story ready
 
 ## What exists
 
@@ -19,51 +20,46 @@
   backlog-state validation, local-link checks, and configurable Turbo task
   enforcement.
 
-The package folders currently contain only manifests and boundary documentation.
-There are no TypeScript entry points, domain models, use cases, adapters, Tauri
-application code, migrations, or product tests yet.
+All eight workspace projects have typed public entry points and executable
+build, lint, typecheck, and entry-point tests. There are no domain models, use
+cases, adapters, Tauri application code, migrations, or product tests yet.
 
 ## Verified on 2026-07-21
 
 From the current working tree:
 
 ```text
-pnpm install --frozen-lockfile  PASS
-pnpm check                      PASS
-format:check                    PASS
-lint                            PASS
-markdown lint                   PASS
-typecheck                       PASS (0 package tasks)
-test                            PASS (0 package tasks)
+pnpm architecture:check  PASS (6 policy tests; 8 projects checked)
+pnpm check               PASS (all required package tasks executed)
+pnpm build               PASS (8 package tasks)
+pnpm security:audit      PASS (no known vulnerabilities)
 ```
 
-The zero-task result is expected before FND-002, but it means the current green
-typecheck and test results validate configuration only, not application code.
-Frozen installation, the root check, and build pass from a clean clone using
-project pnpm 10.33.0. GitHub Actions run `29837154774` also passed on macOS
-after the initial publication to `jeandrorc/replay`.
+The current tests cover the development harness, architecture policy, and each
+package's importable public entry point. Product behavior coverage begins with
+DOM-001.
 
 ## Current step
 
-FND-001, FND-002, FND-004, and FND-005 are complete. All eight workspace
-projects now execute build, lint, typecheck, and public-entry tests. GitHub and
-pnpm report zero known dependency alerts. FND-003 is active.
+Epic 00 is complete. All eight workspace projects execute build, lint,
+typecheck, and public-entry tests; package boundaries are enforced against
+manifests and parsed TypeScript imports. GitHub and pnpm report zero known
+dependency alerts. DOM-001 is active.
 
-This work changes only repository tooling and documentation. It involves no
-application port, external-I/O adapter, or product invariant.
+The active story changes only the pure domain layer. It has no application port
+or external-I/O adapter; identifier generation remains outside the domain.
 
 ## Next steps
 
-1. Enforce package dependency direction and public-only imports in FND-003.
-2. Prove forbidden dependencies fail while desktop composition remains allowed.
-3. Begin DOM-001 only after all Foundation exit conditions are verified.
+1. Define the DOM-001 glossary and exact UTC/range invariants.
+2. Implement pure value objects and identifier types without I/O.
+3. Add boundary, equality, midnight, and DST presentation tests.
+4. Continue to DOM-002 only after DOM-001 evidence is complete.
 
 ## Risks and open decisions
 
 - The default branch is currently named `master`; CI supports both `master` and
   `main`, but the intended long-term default has not been selected.
-- Runtime choices for package testing and architecture-boundary enforcement are
-  intentionally deferred to FND-002 and FND-003.
 - `packages/timeline` remains a provisional boundary and may be merged inward
   only if implementation evidence justifies it, as allowed by the architecture
   contract.

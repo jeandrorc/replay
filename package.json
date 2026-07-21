@@ -9,7 +9,8 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "check": "corepack pnpm format:check && corepack pnpm lint && corepack pnpm lint:md && corepack pnpm harness:check && corepack pnpm typecheck && corepack pnpm test",
+    "check": "corepack pnpm format:check && corepack pnpm lint && corepack pnpm lint:md && corepack pnpm harness:check && corepack pnpm architecture:check && corepack pnpm typecheck && corepack pnpm test",
+    "architecture:check": "node --test scripts/architecture/*.test.mjs && node scripts/architecture/check.mjs",
     "build": "node scripts/harness/run-turbo-task.mjs build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

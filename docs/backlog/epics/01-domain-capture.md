@@ -7,7 +7,7 @@ capture.
 
 ## Stories
 
-### [ ] DOM-001 — Model time ranges and identifiers
+### [~] DOM-001 — Model time ranges and identifiers
 
 Acceptance criteria:
 
