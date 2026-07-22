@@ -24,6 +24,7 @@ const positionalSql = (sql: string): string => sql.replaceAll(/\$\d+/gu, '?');
 
 export class NodeSqliteDatabase implements SqliteDatabase {
   readonly #database: DatabaseSync;
+  #transactionTail: Promise<void> = Promise.resolve();
 
   public constructor(path: string) {
     this.#database = new DatabaseSync(path);
@@ -55,6 +56,27 @@ export class NodeSqliteDatabase implements SqliteDatabase {
           .prepare(positionalSql(sql))
           .all(...(bindValues ?? []).map(toSqlInput)) as Row[],
     );
+  }
+
+  public transaction<Result>(
+    operation: (database: SqliteDatabase) => Promise<Result>,
+  ): Promise<Result> {
+    const result = this.#transactionTail.then(async () => {
+      await this.execute('BEGIN IMMEDIATE;');
+      try {
+        const value = await operation(this);
+        await this.execute('COMMIT;');
+        return value;
+      } catch (cause: unknown) {
+        await this.execute('ROLLBACK;');
+        throw cause;
+      }
+    });
+    this.#transactionTail = result.then(
+      () => undefined,
+      () => undefined,
+    );
+    return result;
   }
 
   public close(): Promise<void> {

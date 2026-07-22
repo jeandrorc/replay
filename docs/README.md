@@ -22,6 +22,8 @@
   migration atomicity, pragmas, and recovery behavior.
 - [Event persistence](architecture/event-persistence.md): private schema,
   idempotency, payload compatibility, quarantine, and bounded queries.
+- [Review persistence](architecture/review-persistence.md): append-only manual
+  revisions, confirmation state, settings, transactions, and corruption.
 - [ADRs](architecture/decisions/README.md): durable technical decisions.
 - [MVP backlog](backlog/README.md): ordered implementation plan.
 - [Execution plans](exec-plans/README.md): active and completed cross-session

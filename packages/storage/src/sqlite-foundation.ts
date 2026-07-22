@@ -4,6 +4,9 @@ export interface SqliteDatabase {
     bindValues?: readonly unknown[],
   ): Promise<SqliteExecutionResult>;
   select<Row>(sql: string, bindValues?: readonly unknown[]): Promise<Row[]>;
+  transaction<Result>(
+    operation: (database: SqliteDatabase) => Promise<Result>,
+  ): Promise<Result>;
   close(): Promise<void>;
 }
 
