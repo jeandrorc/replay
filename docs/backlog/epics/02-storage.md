@@ -42,7 +42,7 @@ Completion evidence:
   while the domain receives only quarantine metadata.
 - Query-plan integration tests verify the bounded UTC query uses its index.
 
-### [~] STO-003 — Persist review decisions and settings
+### [x] STO-003 — Persist review decisions and settings
 
 Acceptance criteria:
 
@@ -51,3 +51,10 @@ Acceptance criteria:
 - Raw events remain unchanged by review operations.
 - Transactions prevent partially saved multi-step decisions.
 - Corrupt values fail safely with actionable diagnostics.
+
+Completion evidence:
+
+- Manual revisions, confirmation state, and validated settings persist in
+  private SQLite tables.
+- Real SQLite tests verify rollback, immutable observed events, timer
+  exclusivity, overlap reporting, and actionable corruption diagnostics.

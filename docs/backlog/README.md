@@ -33,9 +33,9 @@ backlog.
 
 ## Current position
 
-- Epic 00 and Epic 01 are complete. SQLite now persists observed events with
-  bounded UTC queries. STO-003 is the only active story: persist review
-  decisions and local settings transactionally.
+- Epics 00 through 02 are complete. SQLite persists observed events, manual
+  revisions, confirmation state, and local settings. COL-001 is the only active
+  story and begins privacy-bounded macOS collection.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

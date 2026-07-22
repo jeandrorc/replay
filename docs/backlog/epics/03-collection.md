@@ -7,7 +7,7 @@ obvious and resilient.
 
 ## Stories
 
-### [ ] COL-001 — Observe the active macOS application
+### [~] COL-001 — Observe the active macOS application
 
 Acceptance criteria:
 

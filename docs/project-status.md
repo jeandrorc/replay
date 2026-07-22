@@ -1,10 +1,10 @@
 # Project status
 
-- Last reviewed: 2026-07-21
+- Last reviewed: 2026-07-22
 - Current release: Release 0 — executable foundation
-- Current epic: [Epic 02 — Local storage](backlog/epics/02-storage.md)
-- Current story: STO-003 — Persist review decisions and settings
-- Overall state: observed-event persistence complete
+- Current epic: [Epic 03 — Automatic collection](backlog/epics/03-collection.md)
+- Current story: COL-001 — Observe the active macOS application
+- Overall state: local persistence complete; automatic collection starting
 
 ## What exists
 
@@ -25,7 +25,9 @@ instants, half-open ranges, observed events, and manual activity revisions.
 Application use cases record captured events and manage manual activity through
 ports. The storage package now opens Tauri-managed SQLite databases, enforces
 WAL and foreign keys, applies transactional migrations, and persists observed
-events behind the application-owned repository port.
+events behind the application-owned repository port. Manual activity revisions,
+confirmation state, and validated local settings are also durable and
+transactional.
 
 ## Verified on 2026-07-21
 
@@ -40,24 +42,24 @@ pnpm security:audit      PASS (no known vulnerabilities)
 
 The current tests cover the development harness, architecture policy, package
 entry points, domain invariants, application orchestration with fakes, and the
-SQLite foundation and event repository against temporary real databases.
+SQLite foundation, events, review decisions, and settings against temporary real
+databases.
 
 ## Current step
 
 Epic 00 and Epic 01 are complete. Package boundaries remain enforced against
 manifests and parsed TypeScript imports, and pnpm reports zero known dependency
-vulnerabilities. STO-001 and STO-002 are complete; STO-003 is active.
+vulnerabilities. Epic 02 is complete and COL-001 is active.
 
-The active story adds application-owned persistence ports for review decisions
-and settings, then implements them in storage. Domain and application packages
-remain independent of SQLite.
+The active story adds an application-owned active-application source and a
+privacy-bounded macOS collector adapter. Storage remains independent of OS APIs.
 
 ## Next steps
 
-1. Define review-decision and settings ports without persistence types.
-2. Persist append-only manual revisions separately from immutable observations.
-3. Validate timezone, day-boundary, capture, and retention settings.
-4. Prove multi-step decisions are atomic and corrupt rows fail safely.
+1. Define the minimal active-application observation and health contract.
+2. Read only application name and bundle identifier from macOS.
+3. Emit on context change or explicit heartbeat without prohibited metadata.
+4. Detect and explain permission or API availability failures safely.
 
 ## Risks and open decisions
 

@@ -27,8 +27,8 @@ export const createTauriSqliteDatabase = async (
 ): Promise<TauriSqliteDatabase> => {
   const connectionUrl = sqliteConnectionUrl(databaseName);
   const database = await Database.load(connectionUrl);
-
-  return {
+  let transactionTail: Promise<void> = Promise.resolve();
+  const adapter: TauriSqliteDatabase = {
     connectionUrl,
     async execute(sql, bindValues): Promise<SqliteExecutionResult> {
       const result = await database.execute(
@@ -43,8 +43,29 @@ export const createTauriSqliteDatabase = async (
         bindValues ? [...bindValues] : undefined,
       );
     },
+    transaction<Result>(
+      operation: (database: SqliteDatabase) => Promise<Result>,
+    ): Promise<Result> {
+      const result = transactionTail.then(async () => {
+        await adapter.execute('BEGIN IMMEDIATE;');
+        try {
+          const value = await operation(adapter);
+          await adapter.execute('COMMIT;');
+          return value;
+        } catch (cause: unknown) {
+          await adapter.execute('ROLLBACK;');
+          throw cause;
+        }
+      });
+      transactionTail = result.then(
+        () => undefined,
+        () => undefined,
+      );
+      return result;
+    },
     async close(): Promise<void> {
       await database.close();
     },
   };
+  return adapter;
 };

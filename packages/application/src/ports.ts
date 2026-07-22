@@ -9,7 +9,17 @@ import type {
   UserDecisionId,
 } from '@replay/domain';
 
+import type { LocalSettings } from './local-settings.js';
+
 export type ObservationId = Identifier<'Observation'>;
+export type ReviewTargetId = Identifier<'ReviewTarget'>;
+
+export interface ReviewConfirmation {
+  readonly decisionId: UserDecisionId;
+  readonly targetId: ReviewTargetId;
+  readonly confirmed: boolean;
+  readonly decidedAt: UtcInstant;
+}
 
 export interface ClockPort {
   now(): UtcInstant;
@@ -61,4 +71,14 @@ export interface ManualActivityRepositoryPort {
     activity: ManualActivity,
     expectedDecisionId: UserDecisionId,
   ): Promise<ReviseManualActivityResult>;
+}
+
+export interface ReviewStateRepositoryPort {
+  append(confirmation: ReviewConfirmation): Promise<void>;
+  getLatest(targetId: ReviewTargetId): Promise<ReviewConfirmation | null>;
+}
+
+export interface LocalSettingsRepositoryPort {
+  save(settings: LocalSettings): Promise<void>;
+  load(): Promise<LocalSettings | null>;
 }

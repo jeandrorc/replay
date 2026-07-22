@@ -2,6 +2,7 @@ export {
   ApplicationError,
   type ApplicationErrorCode,
 } from './application-error.js';
+export { LocalSettings, type LocalSettingsInput } from './local-settings.js';
 export {
   RecordCapturedEvent,
   type CapturedEventInput,
@@ -20,10 +21,14 @@ export type {
   ClockPort,
   ManualActivityIdGeneratorPort,
   ManualActivityRepositoryPort,
+  LocalSettingsRepositoryPort,
   ObservationId,
   ObservedEventIdGeneratorPort,
   ObservedEventRepositoryPort,
   RecordedObservation,
+  ReviewConfirmation,
+  ReviewStateRepositoryPort,
+  ReviewTargetId,
   SaveObservationResult,
   ReviseManualActivityResult,
   SaveManualActivityResult,

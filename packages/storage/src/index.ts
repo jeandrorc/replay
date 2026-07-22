@@ -10,6 +10,12 @@ export {
 export { replayMigrations } from './migrations.js';
 export { SqliteObservedEventRepository } from './sqlite-observed-event-repository.js';
 export {
+  SqliteLocalSettingsRepository,
+  SqliteManualActivityRepository,
+  SqliteReviewStateRepository,
+} from './sqlite-review-repositories.js';
+export { StorageCorruptionError } from './storage-corruption-error.js';
+export {
   createTauriSqliteDatabase,
   sqliteConnectionUrl,
   type TauriSqliteDatabase,
