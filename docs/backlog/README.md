@@ -33,9 +33,10 @@ backlog.
 
 ## Current position
 
-- Epics 00 through 02 are complete. SQLite persists observed events, manual
-  revisions, confirmation state, and local settings. COL-001 is the only active
-  story and begins privacy-bounded macOS collection.
+- Epics 00 through 02 and COL-001 are complete. SQLite persists observed events,
+  manual revisions, confirmation state, and local settings, while the macOS
+  collector records only active-application identity. COL-002 is the only active
+  story and adds privacy-bounded Git context.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

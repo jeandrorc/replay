@@ -49,7 +49,14 @@ importers:
         specifier: workspace:*
         version: link:../domain
 
-  packages/collector: {}
+  packages/collector:
+    dependencies:
+      '@replay/application':
+        specifier: workspace:*
+        version: link:../application
+      '@replay/domain':
+        specifier: workspace:*
+        version: link:../domain
 
   packages/domain: {}
 

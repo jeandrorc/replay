@@ -71,6 +71,7 @@ await test('supplies accepted identity and observation time before saving', asyn
     payloadVersion: 1,
     kind: 'active_application',
     bundleId: 'com.example.editor',
+    applicationName: 'Editor',
   });
 
   assert.equal(result.status, 'recorded');
@@ -108,6 +109,7 @@ await test('maps invalid collector input to a stable application error', async (
       payloadVersion: 0,
       kind: 'active_application',
       bundleId: 'secret-window-title',
+      applicationName: 'Editor',
     }),
     (error: unknown) =>
       error instanceof ApplicationError &&
@@ -130,6 +132,7 @@ await test('redacts repository failures from the application error', async () =>
       payloadVersion: 1,
       kind: 'active_application',
       bundleId: 'secret-window-title',
+      applicationName: 'Editor',
     }),
     (error: unknown) =>
       error instanceof ApplicationError &&

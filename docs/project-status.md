@@ -3,8 +3,8 @@
 - Last reviewed: 2026-07-22
 - Current release: Release 0 — executable foundation
 - Current epic: [Epic 03 — Automatic collection](backlog/epics/03-collection.md)
-- Current story: COL-001 — Observe the active macOS application
-- Overall state: local persistence complete; automatic collection starting
+- Current story: COL-002 — Observe Git repository context
+- Overall state: local persistence and active-application collection complete
 
 ## What exists
 
@@ -27,7 +27,9 @@ ports. The storage package now opens Tauri-managed SQLite databases, enforces
 WAL and foreign keys, applies transactional migrations, and persists observed
 events behind the application-owned repository port. Manual activity revisions,
 confirmation state, and validated local settings are also durable and
-transactional.
+transactional. The collector package now observes the foreground macOS
+application behind an application-owned port, emits only on context change or
+heartbeat, and exposes permission or availability failures as health state.
 
 ## Verified on 2026-07-21
 
@@ -41,25 +43,28 @@ pnpm security:audit      PASS (no known vulnerabilities)
 ```
 
 The current tests cover the development harness, architecture policy, package
-entry points, domain invariants, application orchestration with fakes, and the
+entry points, domain invariants, application orchestration with fakes, the
 SQLite foundation, events, review decisions, and settings against temporary real
-databases.
+databases, plus deterministic collector behavior and a live macOS adapter
+boundary.
 
 ## Current step
 
 Epic 00 and Epic 01 are complete. Package boundaries remain enforced against
 manifests and parsed TypeScript imports, and pnpm reports zero known dependency
-vulnerabilities. Epic 02 is complete and COL-001 is active.
+vulnerabilities. Epic 02 and COL-001 are complete; COL-002 is active.
 
-The active story adds an application-owned active-application source and a
-privacy-bounded macOS collector adapter. Storage remains independent of OS APIs.
+The active story adds an application-owned Git-context source and a
+privacy-bounded collector adapter. Storage remains independent of process and
+filesystem APIs.
 
 ## Next steps
 
-1. Define the minimal active-application observation and health contract.
-2. Read only application name and bundle identifier from macOS.
-3. Emit on context change or explicit heartbeat without prohibited metadata.
-4. Detect and explain permission or API availability failures safely.
+1. Define the minimal Git-context observation and health contract.
+2. Resolve repository, worktree, branch or detached HEAD, and commit identity.
+3. Strip credentials from remote-derived identity before it can be persisted.
+4. Verify safe degradation for non-repositories, worktrees, submodules, deleted
+   folders, and command timeouts.
 
 ## Risks and open decisions
 

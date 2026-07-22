@@ -22,7 +22,11 @@ export type PrivacyClass =
   | 'quarantined_metadata';
 
 export type ObservedPayload =
-  | Readonly<{ kind: 'active_application'; bundleId: string }>
+  | Readonly<{
+      kind: 'active_application';
+      bundleId: string;
+      applicationName?: string;
+    }>
   | Readonly<{
       kind: 'git_context';
       repositoryId: RepositoryId;
@@ -114,6 +118,7 @@ export class ObservedEvent {
   public static activeApplication(
     envelope: ObservedEventEnvelope,
     bundleId: string,
+    applicationName?: string,
   ): ObservedEvent {
     return new ObservedEvent(
       envelope,
@@ -122,6 +127,15 @@ export class ObservedEvent {
       {
         kind: 'active_application',
         bundleId: requireText(bundleId, 'bundleId', 256),
+        ...(applicationName === undefined
+          ? {}
+          : {
+              applicationName: requireText(
+                applicationName,
+                'applicationName',
+                256,
+              ),
+            }),
       },
     );
   }

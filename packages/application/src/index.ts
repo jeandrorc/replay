@@ -18,6 +18,9 @@ export {
   type OngoingManualActivityInput,
 } from './manage-manual-activity.js';
 export type {
+  ActiveApplicationSnapshot,
+  ActiveApplicationSourcePort,
+  ActiveApplicationSourceResult,
   ClockPort,
   ManualActivityIdGeneratorPort,
   ManualActivityRepositoryPort,
