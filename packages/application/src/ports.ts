@@ -4,6 +4,7 @@ import type {
   ManualActivityId,
   ObservedEvent,
   ObservedEventId,
+  TimeRange,
   UtcInstant,
   UserDecisionId,
 } from '@replay/domain';
@@ -31,6 +32,7 @@ export interface ObservedEventRepositoryPort {
   saveIfAbsent(
     observation: RecordedObservation,
   ): Promise<SaveObservationResult>;
+  findOccurredIn(range: TimeRange, limit: number): Promise<ObservedEvent[]>;
 }
 
 export interface ManualActivityIdGeneratorPort {

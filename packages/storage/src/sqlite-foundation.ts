@@ -1,7 +1,14 @@
 export interface SqliteDatabase {
-  execute(sql: string, bindValues?: readonly unknown[]): Promise<void>;
+  execute(
+    sql: string,
+    bindValues?: readonly unknown[],
+  ): Promise<SqliteExecutionResult>;
   select<Row>(sql: string, bindValues?: readonly unknown[]): Promise<Row[]>;
   close(): Promise<void>;
+}
+
+export interface SqliteExecutionResult {
+  readonly rowsAffected: number;
 }
 
 export interface Migration {
@@ -100,14 +107,17 @@ const configureConnection = async (database: SqliteDatabase): Promise<void> => {
   }
 };
 
-const ensureMigrationLedger = (database: SqliteDatabase): Promise<void> =>
-  database.execute(`
+const ensureMigrationLedger = async (
+  database: SqliteDatabase,
+): Promise<void> => {
+  await database.execute(`
 CREATE TABLE IF NOT EXISTS replay_schema_migrations (
   version INTEGER PRIMARY KEY,
   description TEXT NOT NULL,
   applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 `);
+};
 
 export const initializeSqlite = async (
   database: SqliteDatabase,

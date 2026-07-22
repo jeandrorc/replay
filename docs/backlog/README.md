@@ -33,9 +33,9 @@ backlog.
 
 ## Current position
 
-- Epic 00 and Epic 01 are complete. The SQLite foundation is verified, and
-  STO-002 is the only active story: persist observed events behind the existing
-  application port.
+- Epic 00 and Epic 01 are complete. SQLite now persists observed events with
+  bounded UTC queries. STO-003 is the only active story: persist review
+  decisions and local settings transactionally.
 - The repository-native development harness, CI, dependency security, package
   entry points, and architecture-boundary checks are active.
 

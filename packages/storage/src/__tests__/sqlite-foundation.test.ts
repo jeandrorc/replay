@@ -1,8 +1,4 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, rm } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { DatabaseSync, type SQLInputValue } from 'node:sqlite';
 import test from 'node:test';
 
 import {
@@ -10,53 +6,8 @@ import {
   MigrationError,
   sqliteConnectionUrl,
   type Migration,
-  type SqliteDatabase,
 } from '../index.js';
-
-const toSqlInput = (value: unknown): SQLInputValue => {
-  if (
-    value === null ||
-    typeof value === 'string' ||
-    typeof value === 'number' ||
-    typeof value === 'bigint'
-  ) {
-    return value;
-  }
-  throw new TypeError('Unsupported SQLite test bind value.');
-};
-
-class NodeSqliteDatabase implements SqliteDatabase {
-  readonly #database: DatabaseSync;
-
-  constructor(path: string) {
-    this.#database = new DatabaseSync(path);
-  }
-
-  execute(sql: string, bindValues?: readonly unknown[]): Promise<void> {
-    return Promise.resolve().then(() => {
-      if (bindValues && bindValues.length > 0) {
-        this.#database.prepare(sql).run(...bindValues.map(toSqlInput));
-        return;
-      }
-      this.#database.exec(sql);
-    });
-  }
-
-  select<Row>(sql: string, bindValues?: readonly unknown[]): Promise<Row[]> {
-    return Promise.resolve().then(
-      () =>
-        this.#database
-          .prepare(sql)
-          .all(...(bindValues ?? []).map(toSqlInput)) as Row[],
-    );
-  }
-
-  close(): Promise<void> {
-    return Promise.resolve().then(() => {
-      this.#database.close();
-    });
-  }
-}
+import { withDatabase } from './node-sqlite-database.js';
 
 const migrations: readonly Migration[] = [
   {
@@ -73,20 +24,6 @@ const migrations: readonly Migration[] = [
     );`,
   },
 ];
-
-const withDatabase = async (
-  run: (database: NodeSqliteDatabase, path: string) => Promise<void>,
-): Promise<void> => {
-  const directory = await mkdtemp(join(tmpdir(), 'replay-storage-'));
-  const path = join(directory, 'test.sqlite3');
-  const database = new NodeSqliteDatabase(path);
-  try {
-    await run(database, path);
-  } finally {
-    await database.close();
-    await rm(directory, { recursive: true });
-  }
-};
 
 await test('uses a safe configurable Tauri application-data database name', () => {
   assert.equal(sqliteConnectionUrl(), 'sqlite:replay.sqlite3');

@@ -57,6 +57,12 @@ importers:
 
   packages/storage:
     dependencies:
+      '@replay/application':
+        specifier: workspace:*
+        version: link:../application
+      '@replay/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@tauri-apps/plugin-sql':
         specifier: 2.4.0
         version: 2.4.0

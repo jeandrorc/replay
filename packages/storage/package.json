@@ -17,6 +17,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@replay/application": "workspace:*",
+    "@replay/domain": "workspace:*",
     "@tauri-apps/plugin-sql": "2.4.0"
   }
 }
