@@ -206,7 +206,11 @@ await test('SQLite round-trips every known payload kind and version', async () =
       payloadVersion: 4,
     });
     const events = [
-      ObservedEvent.activeApplication(envelope('1-app'), 'com.example.editor'),
+      ObservedEvent.activeApplication(
+        envelope('1-app'),
+        'com.example.editor',
+        'Editor',
+      ),
       ObservedEvent.gitContext(
         envelope('2-git'),
         Identifier.fromString<'Repository'>('replay'),

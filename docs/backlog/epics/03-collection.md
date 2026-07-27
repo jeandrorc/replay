@@ -7,7 +7,7 @@ obvious and resilient.
 
 ## Stories
 
-### [~] COL-001 — Observe the active macOS application
+### [x] COL-001 — Observe the active macOS application
 
 Acceptance criteria:
 
@@ -18,7 +18,16 @@ Acceptance criteria:
 - The adapter is isolated behind an application port and integration-tested on
   macOS.
 
-### [ ] COL-002 — Observe Git repository context
+Completion evidence:
+
+- Deterministic tests verify first observation, context changes, heartbeat
+  timing, and permission-health propagation.
+- A live macOS boundary test verifies that the adapter returns either an
+  allowlisted application identity or actionable health without crashing.
+- Adapter tests prove that extra native fields cannot cross the application
+  port, and SQLite round-trip tests preserve the allowed payload.
+
+### [~] COL-002 — Observe Git repository context
 
 Acceptance criteria:
 

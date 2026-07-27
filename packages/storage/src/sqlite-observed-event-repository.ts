@@ -72,7 +72,12 @@ const optionalString = (
 const serializePayload = (event: ObservedEvent): string => {
   switch (event.payload.kind) {
     case 'active_application':
-      return JSON.stringify({ bundleId: event.payload.bundleId });
+      return JSON.stringify({
+        bundleId: event.payload.bundleId,
+        ...(event.payload.applicationName === undefined
+          ? {}
+          : { applicationName: event.payload.applicationName }),
+      });
     case 'git_context':
       return JSON.stringify({
         repositoryId: event.payload.repositoryId.value,
@@ -137,6 +142,7 @@ const mapKnownRow = (
       return ObservedEvent.activeApplication(
         envelope,
         requireString(payload, 'bundleId'),
+        optionalString(payload, 'applicationName'),
       );
     case 'git_context': {
       const branchName = optionalString(payload, 'branchName');

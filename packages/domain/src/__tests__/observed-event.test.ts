@@ -25,7 +25,11 @@ await test('derives source and privacy for every initial observed kind', () => {
     UtcInstant.parse('2026-07-21T12:30:00.000Z'),
   );
   const events = [
-    ObservedEvent.activeApplication(envelope, 'com.todesktop.230313mzl4w4u92'),
+    ObservedEvent.activeApplication(
+      envelope,
+      'com.todesktop.230313mzl4w4u92',
+      'Cursor',
+    ),
     ObservedEvent.gitContext(
       envelope,
       Identifier.fromString<'Repository'>('replay'),

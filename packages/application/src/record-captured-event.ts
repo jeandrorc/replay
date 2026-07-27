@@ -21,7 +21,11 @@ interface CapturedInputBase {
 
 export type CapturedEventInput =
   | (CapturedInputBase &
-      Readonly<{ kind: 'active_application'; bundleId: string }>)
+      Readonly<{
+        kind: 'active_application';
+        bundleId: string;
+        applicationName: string;
+      }>)
   | (CapturedInputBase &
       Readonly<{
         kind: 'git_context';
@@ -57,7 +61,11 @@ function buildEvent(
 
   switch (input.kind) {
     case 'active_application':
-      return ObservedEvent.activeApplication(envelope, input.bundleId);
+      return ObservedEvent.activeApplication(
+        envelope,
+        input.bundleId,
+        input.applicationName,
+      );
     case 'git_context':
       return ObservedEvent.gitContext(envelope, input.repositoryId, {
         ...(input.branchName === undefined

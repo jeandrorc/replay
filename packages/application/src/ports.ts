@@ -25,6 +25,22 @@ export interface ClockPort {
   now(): UtcInstant;
 }
 
+export interface ActiveApplicationSnapshot {
+  readonly applicationName: string;
+  readonly bundleId: string;
+}
+
+export type ActiveApplicationSourceResult =
+  | Readonly<{ status: 'available'; snapshot: ActiveApplicationSnapshot }>
+  | Readonly<{
+      status: 'permission_required' | 'unavailable';
+      guidance: string;
+    }>;
+
+export interface ActiveApplicationSourcePort {
+  observe(): Promise<ActiveApplicationSourceResult>;
+}
+
 export interface ObservedEventIdGeneratorPort {
   next(): ObservedEventId;
 }

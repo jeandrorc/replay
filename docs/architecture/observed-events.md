@@ -5,10 +5,12 @@
 Factories derive source and privacy from the payload kind instead of trusting
 caller-supplied classifications.
 
-Initial kinds are active application bundle identity, Git repository context,
-idle/resume, capture pause/resume, and user-authored manual activity. Their
-fields exclude window titles, file contents, diffs, URLs, prompts, secrets, and
-other prohibited capture.
+Initial kinds are active application name and bundle identity, Git repository
+context, idle/resume, capture pause/resume, and user-authored manual activity.
+Application name remains optional only when reading records created before
+COL-001; every newly captured active-application event supplies it. Event fields
+exclude window titles, file contents, diffs, URLs, prompts, secrets, and other
+prohibited capture.
 
 Unknown persisted kinds are quarantined as their bounded original kind, positive
 payload version, and a supplied lowercase SHA-256 digest. Replay does not load

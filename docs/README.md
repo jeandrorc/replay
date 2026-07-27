@@ -14,6 +14,8 @@
   half-open ranges, identifiers, and validation semantics.
 - [Observed events](architecture/observed-events.md): immutable event envelope,
   initial kinds, privacy derivation, and unknown-event quarantine.
+- [Active application collection](architecture/active-application-collection.md):
+  allowlisted macOS identity, health states, and change/heartbeat emission.
 - [Event ingestion](architecture/event-ingestion.md): application ports, atomic
   idempotency, and redacted failure mapping.
 - [Manual activity](architecture/manual-activity.md): ongoing/completed states,
